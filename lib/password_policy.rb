@@ -77,6 +77,10 @@ class PasswordPolicy
   #   replaced with val:
   #
   def vsub(string, val)
-    string.gsub('#VAL#', val.to_s)
+    if val > 1
+      string.gsub('#VAL#', val.to_s).gsub('letter', 'letters').gsub('character', 'characters').gsub('number', 'numbers')
+    else
+      string.gsub('#VAL#', val.to_s)
+    end
   end
 end
